@@ -8,9 +8,6 @@ public class PuzzleBlockSwapEnabled : MonoBehaviour
     [SerializeField] private GameObject[] firstObjects;
     [SerializeField] private GameObject[] SecondObjects;
 
-    [SerializeField] private GameObject[] firstGroundObjects;
-    [SerializeField] private GameObject[] secondGroundObjects;
-
     private AudioManager audioManager;
 
     public bool isFirstActive;
@@ -30,16 +27,6 @@ public class PuzzleBlockSwapEnabled : MonoBehaviour
         for (int i = 0; i < SecondObjects.Length; i++)
         {
             SecondObjects[i].SetActive(false);
-        }
-
-        for (int i = 0; i < firstGroundObjects.Length ; i++)
-        {
-            firstGroundObjects[i].tag = "Untagged";
-        }
-
-        for (int i = 0; i < secondGroundObjects.Length; i++)
-        {
-            secondGroundObjects[i].tag = "Ground";
         }
 
         Pathfinding.UpdateBlocks();
@@ -73,17 +60,6 @@ public class PuzzleBlockSwapEnabled : MonoBehaviour
                         SecondObjects[i].SetActive(true);
                     }
 
-                    for (int i = 0; i < firstGroundObjects.Length; i++)
-                    {
-                        firstGroundObjects[i].tag = "Ground";
-                    }
-
-                    for (int i = 0; i < secondGroundObjects.Length; i++)
-                    {
-                        secondGroundObjects[i].tag = "Untagged";
-                    }
-
-
                     isFirstActive = false;
                 }
 
@@ -98,16 +74,6 @@ public class PuzzleBlockSwapEnabled : MonoBehaviour
                         SecondObjects[i].SetActive(false);
                     }
 
-                    for (int i = 0; i < firstGroundObjects.Length; i++)
-                    {
-                        firstGroundObjects[i].tag = "Untagged";
-                    }
-
-                    for (int i = 0; i < secondGroundObjects.Length; i++)
-                    {
-                        secondGroundObjects[i].tag = "Ground";
-                    }
-
                     isFirstActive = true;
                 }
 
@@ -115,10 +81,6 @@ public class PuzzleBlockSwapEnabled : MonoBehaviour
                 audioManager.PlayRollSound();
             }
 
-            else
-            {
-                Debug.Log("Not Same");
-            }
         }
     }
 
